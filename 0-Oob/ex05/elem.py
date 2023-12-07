@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 
 
-
 class Text(str):
     """
     A Text class to represent a text you could use with your HTML elements.
@@ -114,19 +113,3 @@ class Elem:
                 (type(content) == list and all([type(elem) == Text or
                                                 isinstance(elem, Elem)
                                                 for elem in content])))
-
-
-if __name__ == '__main__':
-
-    html = Elem(tag="html", content=[
-        Elem(tag="head", content=Elem(tag="title", content=Text("Hello ground!"))),
-        Elem(tag="body", content=[
-            Elem(tag="h1", content=Text("Hgit o no, not again!")),
-            Elem(tag="img", attr={"src": "http://i.imgur.com/pfp3T.jpg"}, tag_type='simple'),
-        ])
-    ])
-    # html = Elem(tag="html", content=[
-    #     Elem(tag='head', content="je suis la head"),
-    #     Elem(tag='body'),
-    # ])
-    print (html)

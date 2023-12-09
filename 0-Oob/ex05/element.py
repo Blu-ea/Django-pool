@@ -1,4 +1,4 @@
-from elem import Elem
+from elem import Elem, Text
 
 class Html(Elem):
 	def __init__(self, content=None, attr={}):
@@ -92,27 +92,28 @@ if  __name__ == '__main__':
 		]),
 		Body([
 			H1(['"Ho no, not again!"']),
-			Img(attr= {"src":"http://i.imgur.com/pfp3T.jpg"})        html = Elem(tag="html", content=[
-            Elem(tag="head", content=Elem(tag="title", content=Text("Hello ground!"))),
-            Elem(tag="body", content=[
-                Elem(tag="h1", content=Text("Hgit o no, not again!")),
-                Elem(tag="img", attr={"src": "http://i.imgur.com/pfp3T.jpg"}, tag_type='simple'),
-            ])
-        ])
-        # html = Elem(tag="html", content=[
-        #     Elem(tag='head', content="je suis la head"),
-        #     Elem(tag='body'),
-
+			Img(attr= {"src":"http://i.imgur.com/pfp3T.jpg"})
+					
 		])
-	])
+		])
 	)
+	html = Elem(tag="html", content=[
+			Elem(tag="head", content=Elem(tag="title", content=Text("Hello ground!"))),
+			Elem(tag="body", content=[
+				Elem(tag="h1", content=Text("Hgit o no, not again!")),
+				Elem(tag="img", attr={"src": "http://i.imgur.com/pfp3T.jpg"}, tag_type='simple'),
+			])
+	])
+	html = Elem(tag="html", content=[
+		Elem(tag='head', content=Text("je suis la head")),
+		Elem(tag='body', content=Text("je suis le body"))
+	])
 
 	html = (
 		Html([
 			Head([
 				Title("Je suis le title :D")
-			])
-			],
+			]),
 			Body([
 				Div([
 					H1("Ho Yeaaahhh Ca fonctionne d'un feu de dieux !!"),
@@ -123,4 +124,5 @@ if  __name__ == '__main__':
 					
 				])
 			])
-		))
+		])
+	)

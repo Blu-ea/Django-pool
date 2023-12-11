@@ -1,5 +1,5 @@
 """
-URL configuration for d05 project.
+URL configuration for d06_lib project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.0/topics/http/urls/
@@ -20,7 +20,5 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('ex00/', include("ex00.urls")),
-    path('ex01/', include("ex01.urls")),
     path('ex02/', include("ex02.urls")),
-    path('ex03/', include("ex03.urls")),
 ]

@@ -1,14 +1,12 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from d06_lib.helper import get_db_conn
+from d06_lib.helper import get_db_conn, sql_table_name
 from django.core.handlers.wsgi import WSGIRequest
 
 # Create your views here.
 
 def init(request :WSGIRequest):
-	parse = request.path.split('/')
-	if (len(parse) < 2): return HttpResponse(f"not know {request.path}")
-	table_name = f"{parse[1]}_movies"
+	table_name = sql_table_name(request)
 
 	try:
 		db = get_db_conn()

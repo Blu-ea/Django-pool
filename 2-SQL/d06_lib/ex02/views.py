@@ -1,14 +1,15 @@
 from django.shortcuts import render
-from d06_lib.helper import get_db_conn , movies
+from d06_lib.helper import get_db_conn , movies, sql_table_name
 from django.http import HttpResponse
 import psycopg2
 
 # Create your views here.
 def populate(request):
 	try:
+		table_name = sql_table_name(request)
 		db = get_db_conn()
-		INSERT_DATA = """
-		INSERT INTO ex02_movies
+		INSERT_DATA = f"""
+		INSERT INTO {table_name}
 		(
 			episode_nb,
 			title,
@@ -43,10 +44,13 @@ def populate(request):
 	
 def display(request):
 	try:
+		table_name = sql_table_name(request)
 		db = get_db_conn()
 		with db.cursor() as cur:
-			cur.execute("SELECT * FROM ex02_movies;")
+			cur.execute(f"SELECT * FROM {table_name};")
 			table = cur.fetchall()
-			return render(request, "ex02/display.html", {"movies": table})
+		if (not len(table)):
+			raise Exception()
+		return render(request, "ex02/display.html", {"movies": table})
 	except Exception as e:
 		return HttpResponse(f"No data available !<br/>{e}")

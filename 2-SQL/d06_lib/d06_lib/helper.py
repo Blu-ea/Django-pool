@@ -47,3 +47,8 @@ movies = [{
 			"producer": "Kathleen Kennedy, J. J. Abrams, Bryan Burk",
 			"release_date": "2015-12-11"}
 	]
+
+def sql_table_name(request):
+	parse = request.path.split('/')
+	if (len(parse) < 2): raise Exception(f"not know {request.path}")
+	return(f"{parse[1]}_movies")

@@ -10,7 +10,7 @@ def get_db_conn():
 						host={param['HOST']}\
 						port={param['PORT']}")
 
-movies = [{
+movies_list = [{
 			"episode_nb": 1,
 			"title": "The Phantom Menace",
 			"director": "George Lucas",

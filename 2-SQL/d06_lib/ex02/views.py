@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from d06_lib.helper import get_db_conn , movies, sql_table_name
+from d06_lib.helper import get_db_conn , movies_list, sql_table_name
 from django.http import HttpResponse
 import psycopg2
 
@@ -24,7 +24,7 @@ def populate(request):
 		"""
 		result = []
 		with db.cursor() as curs:
-			for movie in movies:
+			for movie in movies_list:
 				try:
 					curs.execute(INSERT_DATA, (
 						movie['episode_nb'],

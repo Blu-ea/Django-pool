@@ -1,11 +1,11 @@
 from django.shortcuts import render, HttpResponse
-from d06_lib.helper import movies
+from d06_lib.helper import movies_list
 from .models import Movies
 
 # Create your views here.
 def populate(request):
 	result = []
-	for movie in movies:
+	for movie in movies_list:
 		try :
 			ep = Movies(**movie)
 			ep.save()

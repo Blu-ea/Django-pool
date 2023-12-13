@@ -16,6 +16,10 @@
           <th>director</th>
           <th>producer</th>
           <th>release_date</th>
+          {% if len != 6 %}
+          <th> created </th>
+          <th> updated </th>
+          {% endif %}
         </tr>
         {% for movie in movies %}
         <tr>
@@ -25,6 +29,10 @@
           <td>{{ movie.3 }}</td>
           <td>{{ movie.4 }}</td>
           <td>{{ movie.5 }}</td>
+          {% if len != 6 %}
+          <td> {{ movie.6 }} </td>
+          <td> {{ movie.7 }} </td>
+          {% endif %}
         </tr>
         {% endfor %}
       </toby>

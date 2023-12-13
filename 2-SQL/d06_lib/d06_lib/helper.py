@@ -3,12 +3,12 @@ import psycopg2
 
 def get_db_conn():
 	param = settings.DATABASES["default"]
-	return psycopg2.connect(f"\
-						dbname={param['NAME']}\
-						user={param['USER']}\
-						password={param['PASSWORD']}\
-						host={param['HOST']}\
-						port={param['PORT']}")
+	return psycopg2.connect(f"""
+						dbname={param['NAME']}
+						user={param['USER']}
+						password={param['PASSWORD']}
+						host={param['HOST']}
+						port={param['PORT']}""")
 
 movies_list = [{
 			"episode_nb": 1,

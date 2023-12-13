@@ -51,6 +51,6 @@ def display(request):
 			table = cur.fetchall()
 		if (not len(table)):
 			raise Exception()
-		return render(request, "ex02/display.html", {"movies": table})
+		return render(request, "ex02/display.html", {"movies": table, "len": len(table[1])})
 	except Exception as e:
-		return HttpResponse(f"No data available !<br/>{e}")
+		return HttpResponse(f"No data available !<br/> <b>Error -> </b>{e}")

@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'ex',
+	'bootstrap4',
 ]
 
 MIDDLEWARE = [
@@ -123,3 +124,16 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+ANONYMOUS_NAMES = [
+    "Natsume",
+    "Akito",
+    "Haruka",
+    "Rin",
+    "Natsuki",
+    "Yuki",
+    "Megumi",
+    "Shigure",
+    "Ayame",
+    "Kagura",
+    ]

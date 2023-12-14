@@ -1,4 +1,4 @@
-{% load static %} {% load bootstrap3 %}
+{% load static %} {% load bootstrap4 %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +15,7 @@
     {% bootstrap_css %} {% bootstrap_javascript %}
   </head>
   <body>
-    {% include 'nav.html' %}
+    {% include 'ex/nav.html' %}
     <div class="container">
       {% autoescape off %}{% bootstrap_messages %}{% endautoescape %}
       {% block content %}

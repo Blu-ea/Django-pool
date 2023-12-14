@@ -1,30 +1,21 @@
 from django.utils.deprecation import MiddlewareMixin
+from django.http import HttpRequest
+from d07 import settings
+import time
+import random
 
 class AnonymousSessions(MiddlewareMixin):
-	sessionName = [
-		"name 1",
-		"name 2",
-		"name 3",
-		"name 4",
-		"name 5",
-		"name 6",
-		"name 7",
-		"name 8",
-		"name 9",
-		"name 10"
-		]
+	def process_view(self, request: HttpRequest, view_func, *view_args, **view_kwargs):
+		if request.user.is_authenticated:
+			return
+		
+		init_time = request.session.setdefault("_session_anonmymous_timestamp_", time.time())
+		session_is_expired = time.time() - init_time > 42
 
-	def __init__(self, get_response):
-		self.get_response = get_response
-		# One-time configuration and initialization.
+		if session_is_expired:
+			request.session.flush()
 
-	def __call__(self, request):
-		# Code to be executed for each request before
-		# the view (and later middleware) are called.
+		request.session.setdefault('anonymous_name', random.choice(
+			settings.ANONYMOUS_NAMES))
 
-		response = self.get_response(request)
-
-		# Code to be executed for each request/response after
-		# the view is called.
-
-		return response
+		request.user.username = request.session.get('anonymous_name')
